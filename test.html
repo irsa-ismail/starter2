@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="tr">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+Hello World <br/>
+<canvas id="my-house" width="300" height="300"></canvas>
+<script>
+const canvas = document.getElementById('my-house');
+const ctx = canvas.getContext('2d');
+ctx.lineWidth = 3;
+ctx.strokeStyle = 'orange';
+ctx.strokeRect(75, 140, 150, 110);
+ctx.fillRect(130, 190, 40, 60);
+ctx.beginPath();
+ctx.moveTo(50, 140);
+ctx.lineTo(150, 60);
+ctx.lineTo(250, 140);
+ctx.closePath();
+ctx.stroke();
+
+let textMetrics = ctx.measureText("Hello World");
+console.log(textMetrics);
+let mathAbs = Math.abs(textMetrics.actualBoundingBoxLeft) + Math.abs(textMetrics.actualBoundingBoxRight);
+console.log(mathAbs);
+
+ctx.fillText("Hello World", 0, 290);
+
+ctx.lineWidth = 1;
+ctx.strokeStyle = 'green';
+ctx.beginPath();
+ctx.moveTo(0, 295);
+ctx.lineTo(textMetrics.width,295);
+ctx.closePath();
+ctx.stroke();
+
+ctx.lineWidth = 1;
+ctx.strokeStyle = 'blue';
+ctx.beginPath();
+ctx.moveTo(0, 298);
+ctx.lineTo(mathAbs,298);
+ctx.closePath();
+ctx.stroke();
+</script>
+</body>
+</html>
